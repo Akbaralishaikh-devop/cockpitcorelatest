@@ -137,10 +137,10 @@ CREATE TABLE `tbl_botname` (
   `IsActive` tinyint(1) DEFAULT NULL,
   `Duration` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`BotId`),
-  KEY `FK_Tbl_Location` (`LocationId`),
-  KEY `FK_Tbl_Department` (`DepartmentId`),
-  CONSTRAINT `FK_Tbl_Department` FOREIGN KEY (`DepartmentId`) REFERENCES `tbl_department` (`DepartmentId`) ON DELETE CASCADE ON UPDATE CASCADE,
-  CONSTRAINT `FK_Tbl_Location` FOREIGN KEY (`LocationId`) REFERENCES `tbl_location` (`LocationId`) ON DELETE CASCADE ON UPDATE CASCADE
+  KEY `FK_tbl_location` (`LocationId`),
+  KEY `FK_tbl_department` (`DepartmentId`),
+  CONSTRAINT `FK_tbl_department` FOREIGN KEY (`DepartmentId`) REFERENCES `tbl_department` (`DepartmentId`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `FK_tbl_location` FOREIGN KEY (`LocationId`) REFERENCES `tbl_location` (`LocationId`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB AUTO_INCREMENT=54 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -182,6 +182,7 @@ CREATE TABLE `tbl_department` (
 LOCK TABLES `tbl_department` WRITE;
 /*!40000 ALTER TABLE `tbl_department` DISABLE KEYS */;
 INSERT INTO `tbl_department` VALUES (1,'Coe','2022-10-01 00:00:00','Priyanka','2022-11-01 00:00:00','Sakshi',1,0,NULL),(2,'Sales','2022-09-17 00:00:00','Nitin','2022-08-05 00:00:00','Rahul',0,0,NULL),(3,'Finance','2022-08-15 00:00:00','Alisha','2022-09-20 00:00:00','Pooja',1,0,NULL),(4,'Hr','2022-08-15 00:00:00','Vaibhav','2022-09-20 00:00:00','Mangesh',1,0,NULL),(5,'Production','2022-08-15 00:00:00','Vaibhav','2022-09-20 00:00:00','Mangesh',1,0,NULL),(6,'Test','2024-03-13 07:24:43','Sakshi','2024-03-13 07:24:43','Sakshi',1,6,NULL),(7,'Bussines','2023-10-01 00:00:00','Monika','2023-11-01 00:00:00','Kiran',0,4,NULL),(8,'Thane','2024-02-26 10:24:10','Sakshi','2024-02-26 10:24:10','Sakshi',1,6,NULL),(9,'Development','2023-11-01 00:00:00','Megha','2023-11-01 00:00:00','Chinmay',1,4,NULL),(10,'Development','2024-02-01 00:00:00','Omkar','2024-02-01 00:00:00','Ritesh',1,1,NULL),(11,'Oracle','2023-11-01 00:00:00','Deepak','2023-11-01 00:00:00','Chinmay',0,2,NULL),(12,'HR','2023-10-01 00:00:00','Ankita','2023-10-01 00:00:00','Kiran',1,3,NULL),(13,'Middle-wear','2023-07-01 00:00:00','Vaibhav','2023-07-01 00:00:00','Amit',0,4,NULL),(14,'Backend','2023-05-01 00:00:00','Sayali','2023-05-01 00:00:00','Chinmay',1,5,NULL),(15,'Mechanical','2024-03-13 08:47:08','Sakshi','2024-03-13 08:47:08','Sakshi',1,6,NULL),(16,'SocialMedia','2024-03-13 11:26:25','Sakshi','2024-03-13 11:26:25','Sakshi',1,6,NULL),(17,'SocialMedia','2024-03-14 05:34:09','Sakshi','2024-03-14 05:34:09','Sakshi',1,6,NULL),(18,'Learning','2024-03-13 17:43:59','Sakshi','2024-03-13 17:43:59','Sakshi',1,6,NULL),(19,'Marketing','2023-11-01 00:00:00','Shiv','2023-11-01 00:00:00','Aishwarya',0,8,NULL),(20,'Electric','2024-03-14 14:50:03','Sakshi','2024-03-14 14:50:03','Sakshi',1,6,NULL),(21,'Computer','2024-03-17 16:27:42','Sakshi','2024-03-17 16:27:42','Sakshi',1,6,NULL),(22,'Instrument','2024-03-14 14:51:41','Sakshi','2024-03-14 14:51:41','Sakshi',1,6,NULL),(23,'Matching','2024-03-17 15:27:34','Sakshi','2024-03-17 15:27:34','Sakshi',0,6,NULL),(24,'Production','2023-11-01 00:00:00','Payal','2023-11-01 00:00:00','Chinmay',0,8,NULL),(25,'HR','2023-11-01 00:00:00','Kartik','2023-11-01 00:00:00','Kiran',0,8,NULL),(26,'Sales','2023-11-01 00:00:00','Dhruv','2023-11-01 00:00:00','Chinmay',0,8,NULL),(27,'Middleware','2023-11-01 00:00:00','Kiran','2023-11-01 00:00:00','Vaibhav',0,8,NULL),(28,'Oracle','2023-11-01 00:00:00','Aishwarya','2023-11-01 00:00:00','Chinmay',0,8,NULL),(29,'Sales','2023-11-01 00:00:00','Omakr','2023-11-01 00:00:00','Kiran',0,8,NULL),(30,'Packaging','2023-11-01 00:00:00','om','2023-11-01 00:00:00','Sakshi',0,8,NULL),(31,'Dispatch','2023-11-01 00:00:00','Parag','2023-11-01 00:00:00','Chinmay',0,8,NULL),(32,'Content','2023-11-01 00:00:00','Tushar','2023-11-01 00:00:00','khalid',0,8,NULL),(34,'Deveops','2023-11-01 00:00:00','Aishwarya','2023-11-01 00:00:00','khalid',0,8,NULL),(35,'Sales','2023-11-01 00:00:00','Amey','2023-11-01 00:00:00','khalid',0,8,NULL);
+/*!40000 ALTER TABLE `tbl_department` ENABLE KEYS */;
 /*!40000 ALTER TABLE `tbl_department` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -284,12 +285,12 @@ CREATE TABLE `tbl_realtimedata` (
   `UpdatedBy` varchar(100) DEFAULT NULL,
   `IsActive` tinyint(1) DEFAULT NULL,
   PRIMARY KEY (`ProcessId`),
-  KEY `FK_Tbl_BotName` (`BotId`),
-  KEY `FK_Tbl_Department1` (`DepartmentId`),
-  KEY `FK_Tbl_Location1` (`LocationId`),
-  CONSTRAINT `FK_Tbl_BotName` FOREIGN KEY (`BotId`) REFERENCES `tbl_botname` (`BotId`) ON DELETE CASCADE ON UPDATE CASCADE,
-  CONSTRAINT `FK_Tbl_Department1` FOREIGN KEY (`DepartmentId`) REFERENCES `tbl_department` (`DepartmentId`) ON DELETE CASCADE ON UPDATE CASCADE,
-  CONSTRAINT `FK_Tbl_Location1` FOREIGN KEY (`LocationId`) REFERENCES `tbl_location` (`LocationId`) ON DELETE CASCADE ON UPDATE CASCADE
+  KEY `FK_tbl_botname` (`BotId`),
+  KEY `FK_tbl_department1` (`DepartmentId`),
+  KEY `FK_tbl_location1` (`LocationId`),
+  CONSTRAINT `FK_tbl_botname` FOREIGN KEY (`BotId`) REFERENCES `tbl_botname` (`BotId`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `FK_tbl_department1` FOREIGN KEY (`DepartmentId`) REFERENCES `tbl_department` (`DepartmentId`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `FK_tbl_location1` FOREIGN KEY (`LocationId`) REFERENCES `tbl_location` (`LocationId`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB AUTO_INCREMENT=555 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -412,7 +413,7 @@ UNLOCK TABLES;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = 'ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION' */ ;
 DELIMITER ;;
-CREATE DEFINER=`root`@`localhost` PROCEDURE `getlocation`()
+CREATE  PROCEDURE `getlocation`()
 BEGIN
   select * from tbl_location;
 END ;;
@@ -431,9 +432,9 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = 'ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION' */ ;
 DELIMITER ;;
-CREATE DEFINER=`root`@`localhost` PROCEDURE `get_BotDetails`()
+CREATE  PROCEDURE `get_BotDetails`()
 begin
-select * from tbl_BotName;
+select * from tbl_botname;
 
 end ;;
 DELIMITER ;
@@ -451,13 +452,13 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = 'ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION' */ ;
 DELIMITER ;;
-CREATE DEFINER=`root`@`localhost` PROCEDURE `get_ChartData_Tbl_RealTimeBind`(In pLocationId int, In pDepartmentId int, In pBotId int)
+CREATE  PROCEDURE `get_ChartData_Tbl_RealTimeBind`(In pLocationId int, In pDepartmentId int, In pBotId int)
 begin
 Select count(case when BotId=pBotId  and DepartmentId=pDepartmentId then 1 else null end) as total_Bot_count,
  count(case when Status='processed' and botid=pBotId and DepartmentId=pDepartmentId  then 1 else null end) as Processed,
  count(case when Status='Unprocessed' and botid=pBotId  and DepartmentId=pDepartmentId then 1 else null end) as Unprocessed
  /*count(case when product='B' and amount>200 then 1 else null end) as B_count*/
- from Tbl_RealTimeData;
+ from tbl_realtimedata;
 
  End ;;
 DELIMITER ;
@@ -475,9 +476,9 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = 'ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION' */ ;
 DELIMITER ;;
-CREATE DEFINER=`root`@`localhost` PROCEDURE `get_TblBotName1`()
+CREATE  PROCEDURE `get_TblBotName1`()
 BEGIN
-	Select  B.BotId,B.BotName,B.CreatedDate from tbl_BotName B;
+	Select  B.BotId,B.BotName,B.CreatedDate from tbl_botname B;
 END ;;
 DELIMITER ;
 /*!50003 SET sql_mode              = @saved_sql_mode */ ;
@@ -494,9 +495,9 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = 'ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION' */ ;
 DELIMITER ;;
-CREATE DEFINER=`root`@`localhost` PROCEDURE `get_TblDepartment`()
+CREATE  PROCEDURE `get_TblDepartment`()
 BEGIN
-	Select  D.DepartmentId,D.DepartmentName from tbl_Department D;
+	Select  D.DepartmentId,D.DepartmentName from tbl_department D;
 END ;;
 DELIMITER ;
 /*!50003 SET sql_mode              = @saved_sql_mode */ ;
@@ -513,10 +514,10 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = 'ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION' */ ;
 DELIMITER ;;
-CREATE DEFINER=`root`@`localhost` PROCEDURE `get_Tbllocation1`()
+CREATE  PROCEDURE `get_Tbllocation1`()
 BEGIN
 
-	Select  L.LocationId,L.LocationName from tbl_Location L;	
+	Select  L.LocationId,L.LocationName from tbl_location L;	
 	
 END ;;
 DELIMITER ;
@@ -534,7 +535,7 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = 'ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION' */ ;
 DELIMITER ;;
-CREATE DEFINER=`root`@`localhost` PROCEDURE `get_TblRolemst`()
+CREATE  PROCEDURE `get_TblRolemst`()
 BEGIN
 
 	Select  R.role_id, R.name from tbl_rolemst R;	
@@ -554,9 +555,9 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = 'ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION' */ ;
 DELIMITER ;;
-CREATE DEFINER=`root`@`localhost` PROCEDURE `get_Tbl_RealTimeBind`(In pLocationId int, In pDepartmentId int, In pBotId int)
+CREATE  PROCEDURE `get_Tbl_RealTimeBind`(In pLocationId int, In pDepartmentId int, In pBotId int)
 begin
-select * from Tbl_RealTimeData where LocationId = pLocationId and DepartmentId= pDepartmentId and BotId= pBotId and status= 'process'; 
+select * from tbl_realtimedata where LocationId = pLocationId and DepartmentId= pDepartmentId and BotId= pBotId and status= 'process'; 
 end ;;
 DELIMITER ;
 /*!50003 SET sql_mode              = @saved_sql_mode */ ;
@@ -573,9 +574,9 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = 'ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION' */ ;
 DELIMITER ;;
-CREATE DEFINER=`root`@`localhost` PROCEDURE `get_Tbl_RealTimeBind1`(In pLocationId int, In pDepartmentId int, In pBotId int)
+CREATE  PROCEDURE `get_Tbl_RealTimeBind1`(In pLocationId int, In pDepartmentId int, In pBotId int)
 BEGIN
-	Select  ProcessId, B.BotName,L.LocationName,DepartmentName,Process_Name,R.Status,R.Remarks,R.CreatedBy from tbl_realtimedata R join tbl_Location L
+	Select  ProcessId, B.BotName,L.LocationName,DepartmentName,Process_Name,R.Status,R.Remarks,R.CreatedBy from tbl_realtimedata R join tbl_location L
 	on R.LocationId = L.LocationId join tbl_botname B on B.botId = R.BotId
 	join tbl_department D on D.DepartmentId = R.DepartmentId
     where R.LocationId = pLocationId and R.DepartmentId= pDepartmentId and R.BotId= pBotId and status= 'process'; 
@@ -596,9 +597,9 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = 'ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION' */ ;
 DELIMITER ;;
-CREATE DEFINER=`root`@`localhost` PROCEDURE `get_Tbl_RealTimeBindData2`(In pLocationId int, In pDepartmentId int, In pBotId int, pType varchar(100), pSearch varchar(100))
+CREATE  PROCEDURE `get_Tbl_RealTimeBindData2`(In pLocationId int, In pDepartmentId int, In pBotId int, pType varchar(100), pSearch varchar(100))
 BEGIN
-	Select  ProcessId, B.BotName,L.LocationName,DepartmentName,Process_Name,R.Status,R.Remarks,R.CreatedBy,StartTime from tbl_realtimedata R join tbl_Location L
+	Select  ProcessId, B.BotName,L.LocationName,DepartmentName,Process_Name,R.Status,R.Remarks,R.CreatedBy,StartTime from tbl_realtimedata R join tbl_location L
 	on R.LocationId = L.LocationId join tbl_botname B on B.botId = R.BotId
 	join tbl_department D on D.DepartmentId = R.DepartmentId
     where   R.BotId= pBotId and R.DepartmentId= pDepartmentId;
@@ -620,9 +621,9 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = 'ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION' */ ;
 DELIMITER ;;
-CREATE DEFINER=`root`@`localhost` PROCEDURE `get_Tbl_RealTimeBindData3`()
+CREATE  PROCEDURE `get_Tbl_RealTimeBindData3`()
 BEGIN
-	Select  ProcessId, B.BotName,L.LocationName,DepartmentName,Process_Name,R.Status,R.Remarks,R.CreatedBy from tbl_realtimedata R join tbl_Location L
+	Select  ProcessId, B.BotName,L.LocationName,DepartmentName,Process_Name,R.Status,R.Remarks,R.CreatedBy from tbl_realtimedata R join tbl_location L
 	on R.LocationId = L.LocationId join tbl_botname B on B.botId = R.BotId
 	join tbl_department D on D.DepartmentId = R.DepartmentId;
 END ;;
@@ -631,7 +632,7 @@ DELIMITER ;
 /*!50003 SET character_set_client  = @saved_cs_client */ ;
 /*!50003 SET character_set_results = @saved_cs_results */ ;
 /*!50003 SET collation_connection  = @saved_col_connection */ ;
-/*!50003 DROP PROCEDURE IF EXISTS `get_Tbl_RealTimeData` */;
+/*!50003 DROP PROCEDURE IF EXISTS `get_tbl_realtimedata` */;
 /*!50003 SET @saved_cs_client      = @@character_set_client */ ;
 /*!50003 SET @saved_cs_results     = @@character_set_results */ ;
 /*!50003 SET @saved_col_connection = @@collation_connection */ ;
@@ -641,9 +642,9 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = 'ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION' */ ;
 DELIMITER ;;
-CREATE DEFINER=`root`@`localhost` PROCEDURE `get_Tbl_RealTimeData`(In pLocationId int, In pDepartmentId int, In pBotId int, OUT processcount int)
+CREATE  PROCEDURE `get_tbl_realtimedata`(In pLocationId int, In pDepartmentId int, In pBotId int, OUT processcount int)
 begin
-select count(processId) from Tbl_RealTimeData where LocationId = pLocationId and DepartmentId= pDepartmentId and BotId= pBotId and status= 'process' into processcount;
+select count(processId) from tbl_realtimedata where LocationId = pLocationId and DepartmentId= pDepartmentId and BotId= pBotId and status= 'process' into processcount;
 end ;;
 DELIMITER ;
 /*!50003 SET sql_mode              = @saved_sql_mode */ ;
@@ -660,7 +661,7 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = 'ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION' */ ;
 DELIMITER ;;
-CREATE DEFINER=`root`@`localhost` PROCEDURE `InsertDataFromJson`(json_data JSON)
+CREATE  PROCEDURE `InsertDataFromJson`(json_data JSON)
 BEGIN
   Select json_data;
   INSERT INTO Kusers (id, Nname, email) 
@@ -686,7 +687,7 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = 'ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION' */ ;
 DELIMITER ;;
-CREATE DEFINER=`root`@`localhost` PROCEDURE `PrintHi`()
+CREATE  PROCEDURE `PrintHi`()
 BEGIN
     SELECT 'hi' AS message;
 END ;;
@@ -705,7 +706,7 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = 'ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION' */ ;
 DELIMITER ;;
-CREATE DEFINER=`root`@`localhost` PROCEDURE `PrintHiii`()
+CREATE  PROCEDURE `PrintHiii`()
 BEGIN
     SELECT 'hi' AS message;
 END ;;
@@ -724,9 +725,9 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = 'ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION' */ ;
 DELIMITER ;;
-CREATE DEFINER=`root`@`localhost` PROCEDURE `Usp_BotDuration`( in Botname varchar(100))
+CREATE  PROCEDURE `Usp_BotDuration`( in Botname varchar(100))
 BEGIN
-	Select  BotId,Duration,BotName from tbl_BotName where BotName=Botname limit 1;
+	Select  BotId,Duration,BotName from tbl_botname where BotName=Botname limit 1;
 END ;;
 DELIMITER ;
 /*!50003 SET sql_mode              = @saved_sql_mode */ ;
@@ -743,7 +744,7 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = 'ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION' */ ;
 DELIMITER ;;
-CREATE DEFINER=`root`@`localhost` PROCEDURE `Usp_Delete_BotName`(
+CREATE  PROCEDURE `Usp_Delete_BotName`(
     IN p_BotId INT
 )
 BEGIN
@@ -764,7 +765,7 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = 'ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION' */ ;
 DELIMITER ;;
-CREATE DEFINER=`root`@`localhost` PROCEDURE `Usp_Delete_Location`(IN p_LocationId INT)
+CREATE  PROCEDURE `Usp_Delete_Location`(IN p_LocationId INT)
 BEGIN
     DELETE FROM tbl_location WHERE LocationId = p_LocationId Limit 1;
 END ;;
@@ -783,7 +784,7 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = 'ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION' */ ;
 DELIMITER ;;
-CREATE DEFINER=`root`@`localhost` PROCEDURE `Usp_Delete_tbl_department`(IN p_DepartmentId INT)
+CREATE  PROCEDURE `Usp_Delete_tbl_department`(IN p_DepartmentId INT)
 BEGIN
     DELETE FROM tbl_department WHERE DepartmentId = p_DepartmentId  LIMIT 1 ;
 END ;;
@@ -802,9 +803,9 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = 'ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION' */ ;
 DELIMITER ;;
-CREATE DEFINER=`root`@`localhost` PROCEDURE `Usp_DepartmentbtMst`()
+CREATE  PROCEDURE `Usp_DepartmentbtMst`()
 begin
-select DepartmentId, DepartmentName, CreatedDate, CreatedBy, UpdatedDate, UpdatedBy, IsActive from Tbl_Department where isActive = 1;
+select DepartmentId, DepartmentName, CreatedDate, CreatedBy, UpdatedDate, UpdatedBy, IsActive from tbl_department where isActive = 1;
 end ;;
 DELIMITER ;
 /*!50003 SET sql_mode              = @saved_sql_mode */ ;
@@ -821,7 +822,7 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = 'ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION' */ ;
 DELIMITER ;;
-CREATE DEFINER=`root`@`localhost` PROCEDURE `Usp_EditDepartment`( in iDepartmentId int)
+CREATE  PROCEDURE `Usp_EditDepartment`( in iDepartmentId int)
 Begin
 Select DepartmentId,DepartmentName,CreatedDate,CreatedBy,UpdatedDate,UpdatedBy,IsActive from tbl_department where DepartmentId = iDepartmentId;
 end ;;
@@ -840,7 +841,7 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = 'ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION' */ ;
 DELIMITER ;;
-CREATE DEFINER=`root`@`localhost` PROCEDURE `Usp_EditLocation`( in iLocationId int)
+CREATE  PROCEDURE `Usp_EditLocation`( in iLocationId int)
 Begin
 Select LocationId,LocationName,CreatedDate,CreatedBy,UpdatedDate,UpdatedBy,IsActive from tbl_location where LocationId = iLocationId;
 end ;;
@@ -859,9 +860,9 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = 'ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION' */ ;
 DELIMITER ;;
-CREATE DEFINER=`root`@`localhost` PROCEDURE `Usp_get_BotData`(in iBotid int)
+CREATE  PROCEDURE `Usp_get_BotData`(in iBotid int)
 Begin
-select BotId, BotName, LocationId, DepartmentId ,CreatedBy, UpdatedBy,IsActive from tbl_BotName where BotId=iBotId;
+select BotId, BotName, LocationId, DepartmentId ,CreatedBy, UpdatedBy,IsActive from tbl_botname where BotId=iBotId;
 end ;;
 DELIMITER ;
 /*!50003 SET sql_mode              = @saved_sql_mode */ ;
@@ -878,7 +879,7 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = 'ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION' */ ;
 DELIMITER ;;
-CREATE DEFINER=`root`@`localhost` PROCEDURE `Usp_InsertExcel_Bot`(
+CREATE  PROCEDURE `Usp_InsertExcel_Bot`(
 									in LocationId int, 
                                     in DepartmentId int,
 									 in BotName varchar(100),
@@ -888,7 +889,7 @@ CREATE DEFINER=`root`@`localhost` PROCEDURE `Usp_InsertExcel_Bot`(
 									 in	UpdatedBy varchar(100),
 									 in IsActive boolean)
 begin
-INSERT INTO Tbl_botname
+INSERT INTO tbl_botname
                         (
                         LocationId, 
                         DepartmentId,
@@ -923,7 +924,7 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = 'ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION' */ ;
 DELIMITER ;;
-CREATE DEFINER=`root`@`localhost` PROCEDURE `Usp_InsertExcel_Department`(
+CREATE  PROCEDURE `Usp_InsertExcel_Department`(
 									in department_id int, 
                                   
 									 in DepartmentName varchar(100),
@@ -933,7 +934,7 @@ CREATE DEFINER=`root`@`localhost` PROCEDURE `Usp_InsertExcel_Department`(
 									 in	UpdatedBy varchar(100),
 									 in IsActive boolean)
 begin
-INSERT INTO Tbl_department
+INSERT INTO tbl_department
                         (
                         department_id, 
                         
@@ -968,7 +969,7 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = 'ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION' */ ;
 DELIMITER ;;
-CREATE DEFINER=`root`@`localhost` PROCEDURE `Usp_InsertExcel_Location`(in id int, 
+CREATE  PROCEDURE `Usp_InsertExcel_Location`(in id int, 
 									in location_id int, 
                                     in p_Location_Id int,
 									 in LocationName varchar(100),
@@ -978,7 +979,7 @@ CREATE DEFINER=`root`@`localhost` PROCEDURE `Usp_InsertExcel_Location`(in id int
 									 in	UpdatedBy varchar(100),
 									 in IsActive boolean)
 begin
-INSERT INTO Tbl_Location
+INSERT INTO tbl_location
                         (id,
                         location_id, 
                         
@@ -1013,7 +1014,7 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = 'ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION' */ ;
 DELIMITER ;;
-CREATE DEFINER=`root`@`localhost` PROCEDURE `Usp_InsertExcel_Realtimedata`(
+CREATE  PROCEDURE `Usp_InsertExcel_Realtimedata`(
     IN p_ProcessId INT,
     IN p_BotId INT,
     IN p_DepartmentId INT,
@@ -1083,7 +1084,7 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = 'ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION' */ ;
 DELIMITER ;;
-CREATE DEFINER=`root`@`localhost` PROCEDURE `Usp_Insert_BotName1`(
+CREATE  PROCEDURE `Usp_Insert_BotName1`(
                                     in BotName varchar(100),
 									in LocationId  int, 
 									in DepartmentId int, 								
@@ -1099,7 +1100,7 @@ CREATE DEFINER=`root`@`localhost` PROCEDURE `Usp_Insert_BotName1`(
 begin	
     START TRANSACTION;
 	If ActionType = 'Insert' then
-		INSERT INTO Tbl_BotName
+		INSERT INTO tbl_botname
 								( 
 								 BotName,
 								 LocationId, 
@@ -1123,7 +1124,7 @@ begin
 								 DurationtId,
                                  botType);
 		ElseIf  ActionType ='Update' then
-			UPDATE  Tbl_BotName
+			UPDATE  tbl_botname
 					Set	 
 					     BotName = BotName,
 						 LocationId =LocationId, 
@@ -1137,7 +1138,7 @@ begin
                          BotType = botType
 				where  BotId = BotId ;
 		else
-			Delete from Tbl_BotName where BotId = BotId;
+			Delete from tbl_botname where BotId = BotId;
 		end if;
         commit;
   end ;;
@@ -1156,7 +1157,7 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = 'ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION' */ ;
 DELIMITER ;;
-CREATE DEFINER=`root`@`localhost` PROCEDURE `Usp_Insert_Department`(
+CREATE  PROCEDURE `Usp_Insert_Department`(
                                        IN DepartmentName VARCHAR(100),
                                        IN CreatedDate DATETIME,
                                        IN CreatedBy VARCHAR(100),
@@ -1167,7 +1168,7 @@ CREATE DEFINER=`root`@`localhost` PROCEDURE `Usp_Insert_Department`(
 BEGIN
     IF typecal = 'INSERT' THEN
         BEGIN
-            INSERT INTO Tbl_Department
+            INSERT INTO tbl_department
                         (
                          DepartmentName,
                          CreatedDate,
@@ -1187,7 +1188,7 @@ BEGIN
 
     IF typecal = 'UPDATE' THEN
         BEGIN
-            UPDATE Tbl_Department
+            UPDATE tbl_department
             SET    DepartmentName = DepartmentName,
                    CreatedDate = CreatedDate,
                    CreatedBy = CreatedBy,
@@ -1213,7 +1214,7 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = 'ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION' */ ;
 DELIMITER ;;
-CREATE DEFINER=`root`@`localhost` PROCEDURE `Usp_Insert_Department1`(IN department_id int,
+CREATE  PROCEDURE `Usp_Insert_Department1`(IN department_id int,
                                        IN DepartmentName VARCHAR(100),
                                        IN CreatedDate DATETIME,
                                        IN CreatedBy VARCHAR(100),
@@ -1224,7 +1225,7 @@ CREATE DEFINER=`root`@`localhost` PROCEDURE `Usp_Insert_Department1`(IN departme
 BEGIN
     IF typecal = 'INSERT' THEN
         BEGIN
-            INSERT INTO Tbl_Department
+            INSERT INTO tbl_department
                         (department_id,
                          DepartmentName,
                          CreatedDate,
@@ -1244,7 +1245,7 @@ BEGIN
 
     IF typecal = 'UPDATE' THEN
         BEGIN
-            UPDATE Tbl_Department
+            UPDATE tbl_department
             SET   department_id=department_id,
             DepartmentName = DepartmentName,
                    CreatedDate = CreatedDate,
@@ -1271,7 +1272,7 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = 'ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION' */ ;
 DELIMITER ;;
-CREATE DEFINER=`root`@`localhost` PROCEDURE `Usp_Insert_Location`(in id int, 
+CREATE  PROCEDURE `Usp_Insert_Location`(in id int, 
 									in location_id int, 
 									 in LocationName varchar(100),
 									 in CreatedDate datetime,
@@ -1280,7 +1281,7 @@ CREATE DEFINER=`root`@`localhost` PROCEDURE `Usp_Insert_Location`(in id int,
 									 in	UpdatedBy varchar(100),
 									 in IsActive boolean)
 begin
-INSERT INTO Tbl_Location
+INSERT INTO tbl_location
                         (id,
                         location_id, 
 						 LocationName,
@@ -1313,7 +1314,7 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = 'ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION' */ ;
 DELIMITER ;;
-CREATE DEFINER=`root`@`localhost` PROCEDURE `Usp_Insert_Location1`(in LocationId int,
+CREATE  PROCEDURE `Usp_Insert_Location1`(in LocationId int,
                                     in id int, 
 									in location_id int, 
 									 in LocationName varchar(100),
@@ -1326,7 +1327,7 @@ CREATE DEFINER=`root`@`localhost` PROCEDURE `Usp_Insert_Location1`(in LocationId
 begin	
     START TRANSACTION;
 	If ActionType = 'Insert' then
-		INSERT INTO Tbl_Location
+		INSERT INTO tbl_location
                         (id,
                         location_id, 
 						 LocationName,
@@ -1344,7 +1345,7 @@ begin
 						 UpdatedBy,
 						 IsActive);
 else
-			Delete from Tbl_Location where LocationId = LocationId;
+			Delete from tbl_location where LocationId = LocationId;
 		end if;
         commit;
   end ;;
@@ -1363,7 +1364,7 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = 'ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION' */ ;
 DELIMITER ;;
-CREATE DEFINER=`root`@`localhost` PROCEDURE `Usp_Insert_Location2`(
+CREATE  PROCEDURE `Usp_Insert_Location2`(
                                     in id int, 
 									in location_id int, 
 									 in LocationName varchar(100),
@@ -1376,7 +1377,7 @@ CREATE DEFINER=`root`@`localhost` PROCEDURE `Usp_Insert_Location2`(
 begin	
     START TRANSACTION;
 	If ActionType = 'Insert' then
-		INSERT INTO Tbl_Location
+		INSERT INTO tbl_location
                         (id,
                         location_id, 
 						 LocationName,
@@ -1394,7 +1395,7 @@ begin
 						 UpdatedBy,
 						 IsActive);
 else
-			Delete from Tbl_Location where LocationName = LocationName;
+			Delete from tbl_location where LocationName = LocationName;
 		end if;
         commit;
   end ;;
@@ -1413,7 +1414,7 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = 'ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION' */ ;
 DELIMITER ;;
-CREATE DEFINER=`root`@`localhost` PROCEDURE `Usp_Insert_RealTimeData`(in ProcessId int,
+CREATE  PROCEDURE `Usp_Insert_RealTimeData`(in ProcessId int,
                                          in BotId int,
                                          in DepartmentId int,
                                          LocationId int,
@@ -1430,7 +1431,7 @@ CREATE DEFINER=`root`@`localhost` PROCEDURE `Usp_Insert_RealTimeData`(in Process
                                          in UpdatedBy varchar(100),
 										 in IsActive Boolean )
 begin
-INSERT INTO Tbl_RealTimeData
+INSERT INTO tbl_realtimedata
                         ( ProcessId,
 						  BotId,
 						  DepartmentId,
@@ -1480,7 +1481,7 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = 'ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION' */ ;
 DELIMITER ;;
-CREATE DEFINER=`root`@`localhost` PROCEDURE `Usp_Insert_UserRegister`( 
+CREATE  PROCEDURE `Usp_Insert_UserRegister`( 
                                     in username varchar(100),
 									in password varchar(100), 
 									in role_id int, 
@@ -1528,9 +1529,9 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = 'ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION' */ ;
 DELIMITER ;;
-CREATE DEFINER=`root`@`localhost` PROCEDURE `Usp_LocationMst1`()
+CREATE  PROCEDURE `Usp_LocationMst1`()
 begin
-select LocationId, LocationName, DATE_FORMAT(CreatedDate, "%M %d %Y") as CreatedDate, CreatedBy, DATE_FORMAT(UpdatedDate, "%M %d %Y") as UpdatedDate, UpdatedBy, IsActive from Tbl_Location;
+select LocationId, LocationName, DATE_FORMAT(CreatedDate, "%M %d %Y") as CreatedDate, CreatedBy, DATE_FORMAT(UpdatedDate, "%M %d %Y") as UpdatedDate, UpdatedBy, IsActive from tbl_location;
 end ;;
 DELIMITER ;
 /*!50003 SET sql_mode              = @saved_sql_mode */ ;
@@ -1547,7 +1548,7 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = 'ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION' */ ;
 DELIMITER ;;
-CREATE DEFINER=`root`@`localhost` PROCEDURE `Usp_LoginD`(In pusername varchar(100), In ppassword varchar(100))
+CREATE  PROCEDURE `Usp_LoginD`(In pusername varchar(100), In ppassword varchar(100))
 begin
  Select * from login where username=pusername and password=ppassword;
  End ;;
@@ -1566,7 +1567,7 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = 'ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION' */ ;
 DELIMITER ;;
-CREATE DEFINER=`root`@`localhost` PROCEDURE `Usp_MstBotDetail`()
+CREATE  PROCEDURE `Usp_MstBotDetail`()
 Begin
 Select BotId,BotName,L.LocationId,L.LocationName,D.DepartmentId,D.DepartmentName,DATE_FORMAT(B.CreatedDate, "%M %d %Y") as CreatedDate,
 B.CreatedBy,DATE_FORMAT(B.UpdatedDate,"%M %d %Y") as UpdatedDate,B.UpdatedBy,B.IsActive from tbl_botname B join tbl_department D on B.DepartmentID = D.DepartmentId
@@ -1587,7 +1588,7 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = 'ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION' */ ;
 DELIMITER ;;
-CREATE DEFINER=`root`@`localhost` PROCEDURE `Usp_MstDepartmentDetail1`()
+CREATE  PROCEDURE `Usp_MstDepartmentDetail1`()
 Begin
 Select DepartmentId,DepartmentName,DATE_FORMAT(CreatedDate, "%M %d %Y") as CreatedDate,CreatedBy,DATE_FORMAT(UpdatedDate,"%M %d %Y") as UpdatedDate,UpdatedBy,IsActive from tbl_department;
 end ;;
@@ -1606,7 +1607,7 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = 'ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION' */ ;
 DELIMITER ;;
-CREATE DEFINER=`root`@`localhost` PROCEDURE `Usp_MstDepartment_Detail`()
+CREATE  PROCEDURE `Usp_MstDepartment_Detail`()
 Begin
 Select DepartmentId,DepartmentName,DATE_FORMAT(CreatedDate, "%M %d %Y") as CreatedDate,CreatedBy,DATE_FORMAT(UpdatedDate,"%M %d %Y") as UpdatedDate,UpdatedBy,IsActive from tbl_department;
 end ;;
@@ -1625,7 +1626,7 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = 'ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION' */ ;
 DELIMITER ;;
-CREATE DEFINER=`root`@`localhost` PROCEDURE `Usp_Update_BotName`(
+CREATE  PROCEDURE `Usp_Update_BotName`(
     IN p_BotId MEDIUMINT,
     IN p_BotName VARCHAR(100),
     IN p_LocationId MEDIUMINT,
@@ -1636,7 +1637,7 @@ CREATE DEFINER=`root`@`localhost` PROCEDURE `Usp_Update_BotName`(
     IN botType VARCHAR(100)
 )
 BEGIN
-    UPDATE Tbl_botname
+    UPDATE tbl_botname
     SET
         BotName = p_BotName,
         LocationId= p_LocationId,
@@ -1668,7 +1669,7 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = 'ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION' */ ;
 DELIMITER ;;
-CREATE DEFINER=`root`@`localhost` PROCEDURE `Usp_Update_Department`(
+CREATE  PROCEDURE `Usp_Update_Department`(
     IN p_DepartmentId MEDIUMINT,
     IN p_DepartmentName VARCHAR(100),
     IN p_CreatedDate DATETIME,
@@ -1678,7 +1679,7 @@ CREATE DEFINER=`root`@`localhost` PROCEDURE `Usp_Update_Department`(
     IN p_IsActive BOOLEAN
 )
 BEGIN
-    UPDATE Tbl_Department
+    UPDATE tbl_department
     SET
         DepartmentName = p_DepartmentName,
         CreatedDate = p_CreatedDate,
@@ -1707,7 +1708,7 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = 'ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION' */ ;
 DELIMITER ;;
-CREATE DEFINER=`root`@`localhost` PROCEDURE `Usp_Update_Location`(
+CREATE  PROCEDURE `Usp_Update_Location`(
     IN p_LocationId INT,
     IN p_location_id INT,
     IN p_LocationName VARCHAR(255),
@@ -1716,7 +1717,7 @@ CREATE DEFINER=`root`@`localhost` PROCEDURE `Usp_Update_Location`(
     IN p_IsActive BOOLEAN
 )
 BEGIN
-    UPDATE Tbl_location
+    UPDATE tbl_location
     SET
         location_id = p_LocationId,
         LocationName = p_LocationName,
@@ -1744,7 +1745,7 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = 'ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION' */ ;
 DELIMITER ;;
-CREATE DEFINER=`root`@`localhost` PROCEDURE `Usp_UserDetail`()
+CREATE  PROCEDURE `Usp_UserDetail`()
 Begin
 
 Select id,username,R.name,DATE_FORMAT(L.CreatedDate, "%M %d %Y") as CreatedDate,
@@ -1766,7 +1767,7 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = 'ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION' */ ;
 DELIMITER ;;
-CREATE DEFINER=`root`@`localhost` PROCEDURE `vaibhavStoredProcedure`(IN ArrayDemo VARCHAR(100))
+CREATE  PROCEDURE `vaibhavStoredProcedure`(IN ArrayDemo VARCHAR(100))
 BEGIN
       SELECT * FROM vaibhavDemo  WHERE FIND_IN_SET(name, ArrayDemo);
   END ;;
